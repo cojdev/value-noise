@@ -2,7 +2,7 @@
   "name": "@cojdev/value-noise",
   "version": "1.0.0",
   "description": "A seeded Value Noise generator with support for 1D, 2D and 3D noise. Built with JavaScript.",
-  "main": "bundle.js",
+  "main": "src/ValueNoise.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --mode development",
