@@ -149,8 +149,8 @@ export default class ValueNoise {
    * @param {number} y y position
    * @param {number} z z position
    */
-  gen3d(x, y, z) {
-    const { wavelengthx, wavelengthy, wavelengthz } = this;
+  gen3d(x, y, z, wavelengthx, wavelengthy, wavelengthz) {
+    // const { wavelengthx, wavelengthy, wavelengthz } = this;
 
     // normalise coordinate values to points array
     const normalisedX = x > (this.width * wavelengthx) - 1 ? x % ((this.width) * wavelengthx) : x;
