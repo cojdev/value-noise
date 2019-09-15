@@ -16,11 +16,15 @@ export default class ValueNoise {
       height: 50,
       depth: 50,
       dimension: 2,
-      octaves: 1,
+      octaves: 5,
       octaveIndex: 2,
     }, settings);
 
     Object.assign(this, options);
+
+    this.wavelengthx = options.wavelength;
+    this.wavelengthy = options.wavelength;
+    this.wavelengthz = options.wavelength;
 
     this.randomise(this.seed);
 
@@ -63,7 +67,7 @@ export default class ValueNoise {
    */
   randomise(seed = ~~(Math.random() * (2 ** 31 - 1))) {
     const rand = new PRNG(seed);
-    const d = this.settings.dimension;
+    const d = this.dimension;
 
     this.rows = Array(this.height).fill(0).map(
       () => {
@@ -85,8 +89,8 @@ export default class ValueNoise {
    * @param {number} x x position
    * @param {number} y y position
    */
-  gen2d(x, y) {
-    const { wavelengthx, wavelengthy } = this;
+  gen2d(x, y, wavelengthx, wavelengthy) {
+    // const { wavelengthx, wavelengthy } = this;
 
     const normalisedX = x > (this.width * wavelengthx) - 1 ? x % ((this.width) * wavelengthx) : x;
     const normalisedY = y > (this.height * wavelengthy) - 1 ? y % ((this.height) * wavelengthy) : y;
@@ -303,7 +307,7 @@ export default class ValueNoise {
    * @param {number} x x position
    * @param {number} y y position
    */
-  generate(x, y = 0) {
+  generate(x = 0, y = 0) {
     let ret = 0;
     let offset = 0;
 
@@ -313,14 +317,17 @@ export default class ValueNoise {
       const wavelengthx = Math.max(this.wavelengthx / this.octaveIndex ** i, 1);
       const wavelengthy = Math.max(this.wavelengthy / this.octaveIndex ** i, 1);
 
-      ret += this.gen2d(x, y, wavelengthx, wavelengthy, 1) * amplitude;
+      const add = this.gen2d(x, y, wavelengthx, wavelengthy) * amplitude;
+
+      ret += add;
       offset += 1 / this.octaveIndex ** i;
+      // console.table({ add, ret, offset });
     }
 
     return ret / offset;
   }
 
-  generate3d(x, y = 0, z = 0, pixel = 2) {
+  generate3d(x = 0, y = 0, z = 0, pixel = 2) {
     let ret = 0;
     let offset = 0;
 

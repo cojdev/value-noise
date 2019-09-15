@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Value Noise</title>
+</head>
+<body>
+    <canvas id="canvas" width="100" height="100"></canvas>
+    <script src="js/value-noise.js"></script>
+    <script>
+        const cvs = document.querySelector('#canvas');
+        const ctx = cvs.getContext('2d');
+
+        const noise = new ValueNoise();
+
+        console.log(noise);
+        console.log(noise.generate());
+
+        for (let x = 0; x < cvs.width; x++) {
+            for (let y = 0; y < cvs.height; y++) {
+                const l = noise.generate(x,y);
+                ctx.fillStyle = `hsl(0,0%,${l*100}%)`;
+                ctx.fillRect(x,y,1,1);
+            }
+        }
+    </script>
+</body>
+</html>

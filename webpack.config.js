@@ -4,9 +4,12 @@ module.exports = {
   entry: './src/ValueNoise.js',
 
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/'),
-    publicPath: 'dist',
+    filename: 'value-noise.js',
+    library: 'ValueNoise',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
+    path: path.resolve(__dirname, 'docs/js'),
+    publicPath: 'docs/js',
   },
 
   devtool: 'source-map',
