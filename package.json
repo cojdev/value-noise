@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "Charles Ojukwu",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -24,5 +24,16 @@
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cojdev/value-noise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cojdev/value-noise/issues"
+  },
+  "homepage": "https://github.com/cojdev/value-noise#readme"
 }

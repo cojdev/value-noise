@@ -155,7 +155,7 @@ export default class ValueNoise {
     // normalise coordinate values to points array
     const normalisedX = x > (this.width * wavelengthx) - 1 ? x % ((this.width) * wavelengthx) : x;
     const normalisedY = y > (this.height * wavelengthy) - 1 ? y % ((this.height) * wavelengthy) : y;
-    const normalisedZ = z > (this.height * wavelengthz) - 1 ? z % ((this.height) * wavelengthz) : z;
+    const normalisedZ = z > (this.depth * wavelengthz) - 1 ? z % ((this.depth) * wavelengthz) : z;
 
     // get node indices from array closest to supplied position
     const currentNodeX = ~~(normalisedX / wavelengthx);
